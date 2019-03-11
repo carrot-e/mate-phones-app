@@ -1,4 +1,5 @@
 import BaseComponent from './base-component.js';
+import { debounce } from '../services/helpers.js';
 
 class Search extends BaseComponent {
   _render() {
@@ -13,11 +14,12 @@ class Search extends BaseComponent {
   }
 
   addListeners() {
+    const handler = (event) => {
+      this._parent.searchUpdated(event.target.value);
+    };
+
     this._element.querySelector('input')
-      .addEventListener('input', (event) => {
-          this._parent.searchUpdated(event.currentTarget.value);
-        }
-      );
+      .addEventListener('input', debounce(handler));
   }
 }
 
