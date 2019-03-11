@@ -139,6 +139,12 @@ class ProductItem extends BaseComponent {
           this._parent.phoneDeselected();
         }
       );
+
+    this._element.querySelector('[data-action="add-to-cart"]')
+      .addEventListener('click', () => {
+          this._parent.addedToCart(this._item);
+        }
+      );
   }
 
   _initComponents() {

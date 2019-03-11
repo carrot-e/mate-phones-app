@@ -42,6 +42,10 @@ class Page extends BaseComponent {
     this._products.show();
     this._productItem.hide();
   }
+
+  addedToCart(item) {
+    this._products.addedToCart(item);
+  }
 }
 
 export default Page;

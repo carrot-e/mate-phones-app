@@ -56,6 +56,10 @@ class Products extends BaseComponent {
   phoneSelected(phoneId) {
     this._parent.phoneSelected(phoneId);
   }
+
+  addedToCart(item) {
+    this._shoppingCart.addItem(item);
+  }
 }
 
 export default Products;
