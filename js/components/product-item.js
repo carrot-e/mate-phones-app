@@ -1,10 +1,12 @@
 import BaseComponent from './base-component.js';
+import Gallery from './gallery.js';
 
 class ProductItem extends BaseComponent {
   set item(phone) {
     this._item = phone;
     this._render();
     this._addListeners();
+    this._initComponents();
   }
 
   _render() {
@@ -14,8 +16,6 @@ class ProductItem extends BaseComponent {
 
     this._element.innerHTML = `
       <div>
-        <img class="phone" src="img/phones/motorola-xoom-with-wi-fi.0.jpg">
-    
         <button data-action="back">Back</button>
         <button data-action="add-to-cart">Add to cart</button>
     
@@ -23,27 +23,8 @@ class ProductItem extends BaseComponent {
         <h1>${this._item.name}</h1>
     
         <p>${this._item.description}</p>
-    
-        <ul class="phone-thumbs">
-          <li>
-            <img src="img/phones/motorola-xoom-with-wi-fi.0.jpg">
-          </li>
-          <li>
-            <img src="img/phones/motorola-xoom-with-wi-fi.1.jpg">
-          </li>
-          <li>
-            <img src="img/phones/motorola-xoom-with-wi-fi.2.jpg">
-          </li>
-          <li>
-            <img src="img/phones/motorola-xoom-with-wi-fi.3.jpg">
-          </li>
-          <li>
-            <img src="img/phones/motorola-xoom-with-wi-fi.4.jpg">
-          </li>
-          <li>
-            <img src="img/phones/motorola-xoom-with-wi-fi.5.jpg">
-          </li>
-        </ul>
+        
+        <div data-component="gallery"></div>
     
         <ul class="specs">
           <li>
@@ -159,6 +140,14 @@ class ProductItem extends BaseComponent {
         }
       );
   }
+
+  _initComponents() {
+    this._gallery = new Gallery({
+      element: this._element.querySelector('[data-component="gallery"]'),
+      item: this._item,
+    });
+  }
+
 }
 
 export default ProductItem;
