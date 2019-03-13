@@ -136,13 +136,13 @@ class ProductItem extends BaseComponent {
   _addListeners() {
     this._element.querySelector('[data-action="back"]')
       .addEventListener('click', () => {
-          this._parent.phoneDeselected();
+          this._eventEmitter.emit('phoneDeselected');
         }
       );
 
     this._element.querySelector('[data-action="add-to-cart"]')
       .addEventListener('click', () => {
-          this._parent.addedToCart(this._item);
+          this._eventEmitter.emit('addedToCart', this._item);
         }
       );
   }
@@ -151,6 +151,7 @@ class ProductItem extends BaseComponent {
     this._gallery = new Gallery({
       element: this._element.querySelector('[data-component="gallery"]'),
       item: this._item,
+      eventEmitter: this._eventEmitter,
     });
   }
 

@@ -1,7 +1,7 @@
 class BaseComponent {
-  constructor({element, parent}) {
+  constructor({element, eventEmitter}) {
     this._element = element;
-    this._parent = parent;
+    this._eventEmitter = eventEmitter;
 
     this._render();
   }

@@ -47,9 +47,7 @@ class ProductList extends BaseComponent {
         if (event.target.closest('a') !== null) {
           event.preventDefault();
 
-          this._parent.phoneSelected(
-            event.target.closest('a').dataset.productId
-          );
+          this._eventEmitter.emit('phoneSelected', event.target.closest('a').dataset.productId);
         }
       });
   }

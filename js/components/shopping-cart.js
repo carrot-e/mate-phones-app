@@ -5,6 +5,10 @@ class ShoppingCart extends BaseComponent {
     super(params);
 
     this._cart = [];
+
+    this._eventEmitter.subscribe('addedToCart', (item) => {
+      this.addItem(item);
+    });
   }
 
   addItem(item) {

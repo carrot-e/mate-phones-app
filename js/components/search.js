@@ -15,7 +15,7 @@ class Search extends BaseComponent {
 
   addListeners() {
     const handler = (event) => {
-      this._parent.searchUpdated(event.target.value);
+      this._eventEmitter.emit('searchUpdated', event.target.value);
     };
 
     this._element.querySelector('input')

@@ -8,6 +8,9 @@ class Page extends BaseComponent {
     super(params);
 
     this._initComponents();
+
+    this._eventEmitter.subscribe('phoneDeselected', () => this.phoneDeselected());
+    this._eventEmitter.subscribe('phoneSelected', (phoneId) => this.phoneSelected(phoneId));
   }
 
   _render() {
@@ -22,12 +25,12 @@ class Page extends BaseComponent {
   _initComponents() {
     this._products = new Products({
       element: this._element.querySelector('[data-component="products"]'),
-      parent: this,
+      eventEmitter: this._eventEmitter,
     });
 
     this._productItem = new ProductItem({
       element: this._element.querySelector('[data-component="product-item"]'),
-      parent: this,
+      eventEmitter: this._eventEmitter,
     });
   }
 
@@ -41,10 +44,6 @@ class Page extends BaseComponent {
   phoneDeselected() {
     this._products.show();
     this._productItem.hide();
-  }
-
-  addedToCart(item) {
-    this._products.addedToCart(item);
   }
 }
 
