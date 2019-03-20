@@ -83,8 +83,8 @@ class ProductItem extends BaseComponent {
             <dl>
               <dt>Dimensions</dt>
               ${this._item.sizeAndWeight.dimensions
-                .map(dimension => `<dd>${dimension}</dd>`)
-                .join('')}
+    .map(dimension => `<dd>${dimension}</dd>`)
+    .join('')}
               <dt>Weight</dt>
               <dd>${this._item.sizeAndWeight.weight}</dd>
             </dl>
@@ -136,15 +136,13 @@ class ProductItem extends BaseComponent {
   _addListeners() {
     this._element.querySelector('[data-action="back"]')
       .addEventListener('click', () => {
-          this._eventEmitter.emit('phoneDeselected');
-        }
-      );
+        this._eventEmitter.emit('phoneDeselected');
+      });
 
     this._element.querySelector('[data-action="add-to-cart"]')
       .addEventListener('click', () => {
-          this._eventEmitter.emit('addedToCart', this._item);
-        }
-      );
+        this._eventEmitter.emit('addedToCart', this._item);
+      });
   }
 
   _initComponents() {
@@ -154,7 +152,6 @@ class ProductItem extends BaseComponent {
       eventEmitter: this._eventEmitter,
     });
   }
-
 }
 
 export default ProductItem;

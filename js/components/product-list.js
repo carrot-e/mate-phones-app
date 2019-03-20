@@ -23,8 +23,7 @@ class ProductList extends BaseComponent {
           </a>
           <a href="#" data-product-id="${this._products[i].id}">${this._products[i].name}</a>
           <p>${this._products[i].snippet}</p>
-        </li>`
-      );
+        </li>`);
     }
 
     this._element.innerHTML = `

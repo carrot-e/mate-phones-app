@@ -10,7 +10,7 @@ class Page extends BaseComponent {
     this._initComponents();
 
     this._eventEmitter.subscribe('phoneDeselected', () => this.phoneDeselected());
-    this._eventEmitter.subscribe('phoneSelected', (phoneId) => this.phoneSelected(phoneId));
+    this._eventEmitter.subscribe('phoneSelected', phoneId => this.phoneSelected(phoneId));
   }
 
   _render() {

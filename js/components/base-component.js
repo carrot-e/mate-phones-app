@@ -1,5 +1,5 @@
 class BaseComponent {
-  constructor({element, eventEmitter}) {
+  constructor({ element, eventEmitter }) {
     this._element = element;
     this._eventEmitter = eventEmitter;
 

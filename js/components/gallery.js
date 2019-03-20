@@ -19,9 +19,9 @@ export default class Gallery extends BaseComponent {
 
       <ul class="phone-thumbs">
         ${this._item.images.reduce((acc, image) => {
-          acc += `<li><img src="${image}"></li>`;
-          return acc;
-        }, '')}
+    acc += `<li><img src="${image}"></li>`; // eslint-disable-line no-param-reassign
+    return acc;
+  }, '')}
       </ul>
     `;
   }
@@ -35,6 +35,6 @@ export default class Gallery extends BaseComponent {
         }
 
         this._element.querySelector('.phone').src = img.src;
-    });
+      });
   }
 }

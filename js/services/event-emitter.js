@@ -8,7 +8,7 @@ class EventEmitter {
       return;
     }
 
-    this._events[event].forEach(fn => {
+    this._events[event].forEach((fn) => {
       fn(data);
     });
   }

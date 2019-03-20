@@ -11,7 +11,7 @@ class Products extends BaseComponent {
 
     this._initComponents();
 
-    this._eventEmitter.subscribe('searchUpdated', (query) => this.searchUpdated(query));
+    this._eventEmitter.subscribe('searchUpdated', query => this.searchUpdated(query));
   }
 
   _render() {
