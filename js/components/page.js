@@ -34,11 +34,15 @@ class Page extends BaseComponent {
     });
   }
 
-  async phoneSelected(phoneId) {
-    this._products.hide();
-    this._productItem.show();
-
-    this._productItem.item = await PhoneService.getPhone(phoneId);
+  phoneSelected(phoneId) {
+    PhoneService.getPhone(phoneId)
+      .then(phone => {
+        this._productItem.item = phone;
+      })
+      .then(() => {
+        this._products.hide();
+        this._productItem.show();
+      });
   }
 
   phoneDeselected() {

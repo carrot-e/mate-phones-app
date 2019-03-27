@@ -46,9 +46,13 @@ class Products extends BaseComponent {
       eventEmitter: this._eventEmitter,
     });
 
+    PhoneService.getAll()
+      .then(result => {
+        this._productList.products = result;
+      });
+
     this._productList = new ProductList({
       element: this._element.querySelector('[data-component="product-list"]'),
-      products: PhoneService.getAll(),
       eventEmitter: this._eventEmitter,
     });
   }

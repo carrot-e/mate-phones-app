@@ -2,7 +2,8 @@ import phones from '../../phones/phones.js';
 
 class PhoneService {
   static getAll() {
-    return phones;
+    return fetch('https://mate-academy.github.io/phone-catalogue-static/api/phones.json')
+      .then(response => response.json());
   }
 
   static getFiltered(query) {
@@ -11,8 +12,9 @@ class PhoneService {
     });
   }
 
-  static async getPhone(id) {
-    return (await import(`../../phones/${id}.js`)).default;
+  static getPhone(id) {
+    return import(`../../phones/${id}.js`)
+      .then(response => response.default);
   }
 }
 
